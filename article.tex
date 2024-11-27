@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+
+
+\usepackage{xpatch} % for overwriting commands
+\usepackage{sectsty}
+\usepackage{graphicx} % for inserting images
+
+% for multiple images in one figure
+\usepackage{subcaption}
+
+% to wrap text arround a figure
+\usepackage{wrapfig}
+
+% implement example in doc https://www.overleaf.com/learn/latex/Positioning_images_and_tables#Positioning_images
+
+
+\usepackage[ngerman]{babel} % sets document language to german
+\usepackage[citestyle=authoryear]{biblatex} % imports biblatex package
+
+\usepackage[]{fancyhdr} % custom headers and footers
+
+\usepackage{hyperref} % for clickable ToC
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+} % makes links in ToC black
+
+\addbibresource{main.bib}
+
+% margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% codeblocks
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{codeStyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=codeStyle}
+
+% Variables
+\usepackage{amsmath}
+
+\def\exerciseDate{Übungsdatum}
+\def\turnInDate{Abgabedatum}
+\def\authors{Autor}
+\def\titleVar{Titel}
+\def\subject{Unterricht x.Jhg}
+
+% Sets Headers and Footers
+\pagestyle{fancy}
+\fancyhead{} % Clear default header and footer
+\fancyfoot{}
+\fancyhead[L]{\subject} % Left header
+\fancyhead[C]{} % Center header
+\fancyhead[R]{\turnInDate} % Right header
+\fancyfoot[L]{\authors}
+\fancyfoot[R]{Seite \thepage}
+
+\begin{document}
+
+% title
+    \title{\titleVar}
+    \author{\authors}
+    \date{Übungsdatum: \exerciseDate}
+
+% titlepage
+    \begin{center}
+        \includegraphics[width=7cm]{LogoITHTL_white.png}
+        \textbf{{\let\newpage\relax\maketitle}}
+        \subject
+        \vspace{5px}
+        \\Abgabedatum: \turnInDate
+        \vspace{15px}
+        \\Bewertung:
+    \end{center}
+    \thispagestyle{empty}
+    \pagebreak
+
+% optional TOC
+    \tableofcontents
+    \listoffigures
+    \pagebreak
+
+% content
+    \section{section}
+    content
+    \subsection{subsection}
+    content
+    \subsubsection{subsubsection}
+    content
+
+    \paragraph{codeblocks}
+
+    \begin{lstlisting}[language=Python, caption=Python example, label=example]
+    import numpy as np
+
+    def incmatrix(genl1,genl2):
+        m = len(genl1)
+        n = len(genl2)
+        M = None #to become the incidence matrix
+        VT = np.zeros((n*m,1), int)  #dummy variable
+
+        #compute the bitwise xor matrix
+        M1 = bitxormatrix(genl1)
+        M2 = np.triu(bitxormatrix(genl2),1)
+
+        for i in range(m-1):
+            for j in range(i+1, m):
+                [r,c] = np.where(M2 == M1[i,j])
+                for k in range(len(r)):
+                    VT[(i)*n + r[k]] = 1;
+                    VT[(i)*n + c[k]] = 1;
+                    VT[(j)*n + r[k]] = 1;
+                    VT[(j)*n + c[k]] = 1;
+
+                    if M is None:
+                        M = np.copy(VT)
+                    else:
+                        M = np.concatenate((M, VT), 1)
+
+                    VT = np.zeros((n*m,1), int)
+
+        return M
+    \end{lstlisting}
+
+
+    \paragraph{paragraph}
+    this is a reference to a figure (Abb. \ref{fig:demo-figure})
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1cm]{LogoITHTL_white.png}
+        \caption{this is a figure}
+        \label{fig:demo-figure}
+    \end{figure}
+
+\end{document}
