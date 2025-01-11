@@ -63,7 +63,7 @@
     showtabs=false,
     tabsize=2,
     extendedchars=false,
-    inputencoding=utf8 
+    inputencoding=utf8
 }
 \lstset{style=codeStyle}
 
@@ -76,6 +76,9 @@
 \def\authorsLastname{Autoren Nachname}
 \def\titleVar{Titel}
 \def\subject{Unterricht x.Jhg}
+
+% For better referincing
+\usepackage{cleveref}
 
 % Sets Headers and Footers
 \pagestyle{fancy}
@@ -118,11 +121,11 @@
     \subsection{subsection}
     content
     \subsubsection{subsubsection}
-    content
+    Reference to the python code: \cref{python_code}
 
     \paragraph{codeblocks}
 
-    \begin{lstlisting}[language=Python, caption=Python example, label=example]
+    \begin{lstlisting}[language=Python, caption=Python example, label=python_code, caption=python code]
     import numpy as np
 
     def incmatrix(genl1,genl2):
