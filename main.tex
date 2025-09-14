@@ -95,31 +95,30 @@
 \begin{document}
 
 % title
-    \title{\titleVar}
-    \author{\authors}
-    \date{Übungsdatum: \exerciseDate}
+\title{\titleVar}
+\author{\authors}
+\date{Übungsdatum: \exerciseDate}
 
 % titlepage
-    \begin{center}
-        \includegraphics[width=7cm]{LogoITHTL_white.png}
-        \textbf{{\let\newpage\relax\maketitle}}
-        \subject
-        \vspace{5px}
-        \\Abgabedatum: \turnInDate
-        \vspace{15px}
-        \\Bewertung:
-    \end{center}
-    \thispagestyle{empty}
-    \pagebreak
+\begin{center}
+    \includegraphics[width=7cm]{LogoITHTL_white.png}
+    \textbf{{\let\newpage\relax\maketitle}}
+    \subject
+    \vspace{5px}
+    \\Abgabedatum: \turnInDate
+    \vspace{15px}
+    \\Bewertung:
+\end{center}
+\thispagestyle{empty}
+\pagebreak
 
 % optional TOC
-    \tableofcontents
-    \listoffigures
-    \pagebreak
+\tableofcontents
+\listoffigures
+\pagebreak
 
 % content
 
-% bibliography 
-
-    \printbibliography
+% bibliography (is only rendered when at least one source from refs.bib is used
+\printbibliography
 \end{document}
