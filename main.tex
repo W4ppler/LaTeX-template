@@ -12,9 +12,6 @@
 % to wrap text arround a figure
 \usepackage{wrapfig}
 
-% implement example in doc https://www.overleaf.com/learn/latex/Positioning_images_and_tables#Positioning_images
-
-
 \usepackage[ngerman]{babel} % sets document language to german
 
 \usepackage[]{fancyhdr} % custom headers and footers
@@ -121,28 +118,8 @@
     \pagebreak
 
 % content
-    \section{section}
-    content
-    \subsection{subsection}
-    This is a cite \cite{W4ppler}
-    \subsubsection{subsubsection}
-    Reference to the python code: \cref{python_code}
 
-    \paragraph{codeblocks}
-
-    \begin{lstlisting}[language=Python, caption=Python example, label=python_code,] 
-    print("Hello World")
-    \end{lstlisting}
-
-    \paragraph{paragraph}
-    this is a reference to a figure (Abb. \ref{fig:demo-figure})
-
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=1cm]{LogoITHTL_white.png}
-        \caption{this is a figure}
-        \label{fig:demo-figure}
-    \end{figure}
+% bibliography 
 
     \printbibliography
 \end{document}
